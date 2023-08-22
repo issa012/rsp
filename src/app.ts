@@ -6,7 +6,9 @@ import indexRouter from './routes/router';
 const app = express();
 
 app.use(bodyParser.json());
-app.use(cors({ origin: 'http://localhost:5173', credentials: true, methods: ['GET', 'POST'] }));
+app.use(
+  cors({ origin: 'https://rsp-client.vercel.app', credentials: true, methods: ['GET', 'POST'] })
+);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
