@@ -7,7 +7,12 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(
-  cors({ origin: 'https://rsp-client.vercel.app', credentials: true, methods: ['GET', 'POST'] })
+  cors({
+    origin: 'https://rsp-client.vercel.app',
+    credentials: true,
+    methods: ['GET', 'POST'],
+    allowedHeaders: 'Content-Type,*',
+  })
 );
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
