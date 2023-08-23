@@ -20,12 +20,12 @@ router.post('/guest-login', async function (req: Request, res: Response) {
 router.get('users/:id', async function (req: Request, res: Response) {
   const userId = +req.params.id;
   const results = await findUser(userId);
-  return results;
+  return res.json(results);
 });
 
 router.get('/top10', async function (req: Request, res: Response) {
   const results = await findTopUsers();
-  return results;
+  return res.json(results);
 });
 
 export default router;
