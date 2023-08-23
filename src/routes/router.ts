@@ -13,7 +13,7 @@ router.post('/guest-login', async function (req: Request, res: Response) {
     return res.json(results);
   }
   const results = await createGuest();
-  res.cookie('guest', results, { httpOnly: true, path: '/' });
+  res.cookie('guest', results, { httpOnly: true, path: '/', sameSite: 'none' });
   return res.json(results);
 });
 
