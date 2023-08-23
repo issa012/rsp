@@ -17,7 +17,7 @@ router.post('/guest-login', async function (req: Request, res: Response) {
   return res.json(results);
 });
 
-router.get('users/:id', async function (req: Request, res: Response) {
+router.get('/users/:id', async function (req: Request, res: Response) {
   const userId = +req.params.id;
   const results = await findUser(userId);
   return res.json(results);
