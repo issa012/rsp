@@ -13,7 +13,11 @@ router.post('/guest-login', async function (req: Request, res: Response) {
     return res.json(results);
   }
   const results = await createGuest();
-  res.cookie('guest', results, { httpOnly: true, path: '/', sameSite: 'none' });
+  res.cookie('guest', results, {
+    domain: 'https://rsp-client.vercel.app',
+    path: '/',
+    sameSite: 'none',
+  });
   return res.json(results);
 });
 
