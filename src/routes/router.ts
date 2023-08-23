@@ -8,14 +8,12 @@ router.get('/', (req: Request, res: Response) => {
 });
 
 router.post('/guest-login', async function (req: Request, res: Response) {
-  if (req.get('Guest-Login')) {
-    let user = JSON.parse(req.header('Guest-Login'));
-    console.log(req.headers);
-    const results = await findUser(user.id);
+  if (req.body.id) {
+    console.log(req.body.id);
+    const results = await findUser(req.body.id);
     return res.json(results);
   }
   const results = await createGuest();
-  res.header('Guest-Login', JSON.stringify(results));
   return res.json(results);
 });
 
