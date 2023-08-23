@@ -25,6 +25,7 @@ export const findTopUsers = async () => {
   return await userRepository
     .createQueryBuilder('user')
     .select('user')
+    .from(User, 'user')
     .orderBy('user.wins', 'DESC')
     .limit(10);
 };
