@@ -21,6 +21,10 @@ export const findUser = async (id: number) => {
   });
 };
 
+export const findTopUsers = async () => {
+  return await userRepository.createQueryBuilder('user').orderBy('user.wins', 'DESC').limit(10);
+};
+
 export const updateWins = async (id: number) => {
   await userRepository.increment({ id: id }, 'wins', 1);
 };

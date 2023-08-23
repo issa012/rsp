@@ -1,5 +1,5 @@
 import { Request, Response, Router } from 'express';
-import { createGuest, findUser } from '../services/user.service';
+import { createGuest, findTopUsers, findUser } from '../services/user.service';
 
 const router = Router();
 
@@ -15,6 +15,17 @@ router.post('/guest-login', async function (req: Request, res: Response) {
   }
   const results = await createGuest();
   return res.json(results);
+});
+
+router.get('users/:id', async function (req: Request, res: Response) {
+  const userId = +req.params.id;
+  const results = await findUser(userId);
+  return results;
+});
+
+router.get('/top10', async function (req: Request, res: Response) {
+  const results = await findTopUsers();
+  return results;
 });
 
 export default router;
